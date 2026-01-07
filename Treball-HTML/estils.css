@@ -7,6 +7,52 @@
 
     --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+/* ===== HEADER ===== */
+
+.site-header{
+  position: sticky;
+  top: 0;
+  background-color: var(--color-dark);
+  z-index: 10;
+}
+
+.header-inner{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+/* Marca */
+.brand{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--color-light);
+}
+
+.brand-logo{
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: block;
+}
+
+.brand-name{
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+
+.header_container a:hover{
+  color: var(--color-red);
+}
+
 main{
     color: var(--color-light);
 }
@@ -45,13 +91,7 @@ body::before {
 
 
 
-header {
-    position:sticky;
-    background-color: var(--color-dark);
-    padding: 20px 0;
-    text-align: center;
-    top:0;
-}
+
 
 header a {
     color: var(--color-light);
@@ -60,11 +100,42 @@ header a {
     font-size: 18px;
     transition: color 0.3s ease;
 }
-.hero,
-.game,
-.cta{
-    margin: 40px 0;
+.img-juego img{
+    max-width: 420px;
+    border-radius: 12px;
+    
 }
+@keyframes rotarScroll {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.img-juego img{
+  animation: rotarScroll linear;
+  animation-timeline: view();
+  animation-range: contain 0% exit 100%;
+  will-change: transform;
+  transform-origin: center;
+}
+
+
+
+.hero{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    padding: 60px 20px;
+}
+.hero-content{
+    max-width: 600px;
+    text-align: left;
+}
+
+.game{
+    margin-top: 15px;
+}
+
 
 .btn {
     background-color: var(--color-red);
@@ -78,37 +149,234 @@ header a {
 
 .btn:hover {
     background-color: var(--color-red-soft);
-    transform: scale(1.05);
+    transform: translateY(-8px) scale(1.03);
+    
+}
+.btn{
+    display: inline-block;
+    will-change: transform;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-header a:hover {
-    color: var(--color-red);
-}
+
 .header_container{
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
 }
-footer {
-    background-color: var(--color-dark);
-    padding: 15px 0;
-    text-align: center;
-    font-size: 15px;
-    margin-top: 60px;
-    position: relative;
-    z-index: 1;
+.header_container a{
+    display: flex;
+    align-items: center;
+    gap: 1px;
 }
-
-footer a {
-    color: var(--color-light);
-    margin: 0 10px;
-    text-decoration: none;
-    transition: color 0.3s ease;
+.header_container svg{
+    width: 26px;
+    height: 26px;
+    flex-shrink: 0;
 }
-
-footer a:hover {
+.header_container svg:hover{
     color: var(--color-red);
 }
+/* ===== FOOTER ===== */
+.site-footer{
+  background-color: var(--color-dark);
+  padding: 18px 0;
+  margin-top: 60px;
+}
+
+.footer-inner{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-izq{
+    color: var(--color-light);
+    font-size: 14px;
+    opacity: 0.8;
+}
+.footer-der{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.footer-social{
+  display: flex;
+  gap: 14px;
+}
+
+.footer-social a{
+  color: var(--color-light);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+/* ===== ANIMACIÓ VECTORIAL (SVG) ===== */
+.vector-anim{
+  display: flex;
+  justify-content: center;
+  margin: 20px 0 50px;
+
+  width: 100%;
+  overflow: visible;
+}
+
+
+.tiles-svg{
+  width: 100%;
+  max-width: 1100px;
+}
+
+/* Cuerpo ficha */
+.tile-body{
+  fill: url(#tileFill);
+  stroke: rgba(0,0,0,0.18);
+  stroke-width: 2;
+}
+
+/* Brillo */
+.tile-gloss{
+  fill: url(#tileGloss);
+}
+
+/* Tipografía */
+.tile-num, .tile-mini, .tile-emboss{
+  font-family: var(--font-main);
+  font-weight: 800;
+  text-anchor: middle;
+  dominant-baseline: middle;
+}
+
+/* Número grande (posicionado arriba) */
+.tile-num{
+  font-size: 54px;
+  paint-order: stroke;
+  stroke: rgba(255,255,255,0.7);
+  stroke-width: 6;
+}
+
+/* Número pequeño esquina */
+.tile-mini{
+  font-size: 16px;
+  opacity: 0.9;
+}
+
+/* “Relieve” inferior */
+.tile-emboss{
+  font-size: 14px;
+  font-weight: 700;
+  fill: rgba(0,0,0,0.18);
+  letter-spacing: 0.5px;
+}
+
+/* Colores tipo Rummikub */
+.red{ fill: #cf1f2e; }
+.blue{ fill: #1e61d8; }
+.black{ fill: #1b1b1b; }
+.orange{ fill: #e58a12; }
+
+/* Logo comodín */
+.tile-logo{
+  opacity: 0.95;
+}
+
+/* Animación suave */
+.tile{
+  transform-origin: center;
+  animation: floatTile 2.8s ease-in-out infinite;
+}
+.tile-1{ animation-delay: 0s; }
+.tile-2{ animation-delay: .22s; }
+.tile-3{ animation-delay: .44s; }
+.tile-4{ animation-delay: .66s; }
+
+
+@keyframes floatTile{
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+/* ===== COM ES JUGA ===== */
+.how-to-play{
+  max-width: 900px;
+  margin: 40px auto 10px;
+  padding: 28px 22px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 16px;
+}
+
+.how-to-play h2{
+  margin: 0 0 12px;
+  color: var(--color-light);
+  text-align: center;
+}
+
+.how-intro{
+  margin: 0 0 16px;
+  color: var(--color-light);
+  opacity: 0.9;
+  line-height: 1.5;
+}
+
+.how-list{
+  margin: 0 0 18px;
+  padding-left: 18px;
+  color: var(--color-light);
+  opacity: 0.9;
+}
+
+.how-list li{
+  margin: 8px 0;
+}
+
+.how-to-play .btn{
+  display: inline-block;
+}
+
+
+.footer-izq a{
+  color: var(--color-light);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+.footer-social a:hover{
+  color: var(--color-red);
+  transform: translateY(-4px);
+}
+
+.footer-izq a:hover{
+  color: var(--color-red);
+  transform: translateY(-4px);
+}
+
+.material-symbols-outlined{
+  font-size: 28px;
+  line-height: 1;
+}
+
+.footer-copy{
+  color: var(--color-light);
+  font-size: 14px;
+  white-space: nowrap;
+}
+.footer-copy a{
+  color: var(--color-light);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+.footer-copy a:hover{
+  color: var(--color-red);
+  transform: translateY(-4px);
+}
+
 
 
 .important-tittles {
@@ -207,7 +475,7 @@ footer a:hover {
 }
 
 .card:hover {
-    transform: translateY(-18px);
+    transform: translateY(-18px) scale(1.2);
     box-shadow: 0 12px 25px rgba(177, 18, 38, 0.35);
 }
 .cta {
